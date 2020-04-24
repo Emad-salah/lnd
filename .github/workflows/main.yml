@@ -27,4 +27,4 @@ jobs:
         # Branch name to sync to in this repo
         destination_branch: master
         # GitHub token secret
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.TOKEN }}
