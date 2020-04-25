@@ -21,7 +21,7 @@ jobs:
       uses: repo-sync/github-sync@v2.0.0
       with:
         # GitHub public repo slug or full https clone url (with access_token if needed)
-        source_repo: lightningnetwork/lnd
+        source_repo: https://github.com/lightningnetwork/lnd.git
         # Branch name to sync from
         source_branch: master
         # Branch name to sync to in this repo
