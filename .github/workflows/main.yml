@@ -17,14 +17,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: GitHub Repo Sync
-      uses: repo-sync/github-sync@v2.0.0
+    - uses: TG908/fork-sync@v1.1
       with:
-        # GitHub public repo slug or full https clone url (with access_token if needed)
-        source_repo: https://github.com/lightningnetwork/lnd.git
-        # Branch name to sync from
-        source_branch: master
-        # Branch name to sync to in this repo
-        destination_branch: master
-        # GitHub token secret
-        github_token: ${{ secrets.TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
