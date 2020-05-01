@@ -1,0 +1,12 @@
+version: 1.0.{build}
+image: Ubuntu1804
+test_script:
+- sh: make release buildtags="experimental"
+- psc: Get-ChildItem .\projects\lnd\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name -DeploymentName ardublockly-s3-deployment }
+- psc: Get-ChildItem .\projects\lnd\*.tar.gz | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name -DeploymentName ardublockly-s3-deployment }
+deploy:
+- provider: GitHub
+  tag: v${appveyor_build_version}
+  release: lnd-v${appveyor_build_version}
+  auth_token:
+    secure: yrYqUuJOQQ2tuGG/cO+HCibFyO8krNX9b45ZxX75uZXJn+6aVdeB/q4tmxm/0gHH
