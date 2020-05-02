@@ -1,5 +1,6 @@
 version: 1.0.{build}
 image: Ubuntu1804
+skip_tags: true
 build_script:
 - sh: make release sys=windows-amd64 buildtags="experimental"
 - sh: cd ~/projects/lnd
