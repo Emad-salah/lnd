@@ -9,7 +9,7 @@ build_script:
 - sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip" -exec appveyor PushArtifact {} -DeploymentName github-deployment \;
 test: off
 artifacts:
-  - path: ~/projects/lnd/lnd-windows*.zip
+  - path: ~/projects/lnd/lnd-windows*zip
     name: windows-package
 deploy:
 - provider: GitHub
