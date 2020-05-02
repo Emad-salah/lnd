@@ -4,7 +4,7 @@ skip_tags: true
 build_script:
 - sh: make release sys=windows-amd64 buildtags="experimental"
 - sh: cd ~/projects/lnd
-- sh: ls -1 lnd-* | sed 's/-\([1-9]\)\./-0\1\./g' | sort -r | sed 's/-0\([1-9]\)\./-\1\./g' | sed 's/\://g'
+- sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip"
 - sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-linux-*.tar.gz" -exec appveyor PushArtifact {} -DeploymentName github-deployment \;
 - sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip" -exec appveyor PushArtifact {} -DeploymentName github-deployment \;
 test: off
