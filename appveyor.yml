@@ -8,10 +8,13 @@ build_script:
 - sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-linux-*.tar.gz" -exec appveyor PushArtifact {} -DeploymentName github-deployment \;
 - sh: find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip" -exec appveyor PushArtifact {} -DeploymentName github-deployment \;
 test: off
+artifacts:
+  - path: ~/projects/lnd/lnd-*/lnd-windows*.zip
+    name: windows-package
 deploy:
 - provider: GitHub
-  tag: v1.0.$(APPVEYOR_BUILD_VERSION)
-  release: lnd-v1.0.$(APPVEYOR_BUILD_VERSION)
-  artifact: github-deployment
+  tag: v$(APPVEYOR_BUILD_VERSION)
+  release: lnd-v$(APPVEYOR_BUILD_VERSION)
+  artifact: windows-package
   auth_token:
     secure: yrYqUuJOQQ2tuGG/cO+HCibFyO8krNX9b45ZxX75uZXJn+6aVdeB/q4tmxm/0gHH
