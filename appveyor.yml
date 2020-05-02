@@ -9,8 +9,8 @@ build_script:
 test: off
 deploy:
 - provider: GitHub
-  tag: v1.0.{build}
-  name: github-deployment
-  release: lnd-v1.0.{build}
+  tag: v1.0.$(APPVEYOR_BUILD_VERSION)
+  release: lnd-v1.0.$(APPVEYOR_BUILD_VERSION)
+  artifact: github-deployment
   auth_token:
     secure: yrYqUuJOQQ2tuGG/cO+HCibFyO8krNX9b45ZxX75uZXJn+6aVdeB/q4tmxm/0gHH
