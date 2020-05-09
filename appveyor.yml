@@ -9,9 +9,8 @@ before_build:
 - sh: npm install -g github-release-cli
 build_script:
 - sh: make release sys=windows-amd64 buildtags="experimental"
-- sh: cd ~/projects/lnd && find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip"
-- sh: cd ~/projects/lnd && ls -a
-- sh: cd ~/projects/lnd && find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip" -exec github-release upload --owner=Emad-salah --repo=lnd --tag=$APPVEYOR_BUILD_VERSION --name=$APPVEYOR_REPO_BRANCH --body="${COMMIT_LOG}" {} \;
+- sh: cd ~/projects/lnd && find . -maxdepth 1 -mindepth 1 -type d -name "lnd-*"
+- sh: cd ~/projects/lnd && find . -maxdepth 1 -mindepth 1 -type d -name "lnd-*" -exec cd {} \; && find . -maxdepth 1 -mindepth 1 -type f -name "lnd-windows-*.zip" -exec github-release upload --owner=Emad-salah --repo=lnd --tag=$APPVEYOR_BUILD_VERSION --name=$APPVEYOR_REPO_BRANCH --body="${COMMIT_LOG}" {} \;
 test: off
 # deploy:
 # - provider: GitHub
